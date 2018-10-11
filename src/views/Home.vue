@@ -1,18 +1,42 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-card>
+    <v-alert type="error" :value="errorMessage">{{errorMessage}}</v-alert>
+    <v-container v-if="!errorMessage">
+      <v-layout>
+        <v-flex v-for="contact in contacts" :key="contact.id">
+          <contact :person="contact"/>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-card>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import { mapState } from 'vuex'
+import Contact from '@/components/Contact.vue'
 
 export default {
-  name: "home",
-  components: {
-    HelloWorld
+  components: { Contact },
+  data() {
+    return {
+      busy: false
+    }
+  },
+  computed: {
+    ...mapState(['contacts']),
+    errorMessage() {
+      return this.$store.error ? this.$store.error.errorMessage : null
+    }
+  },
+  created() {
+    this.busy = true
+
+    this.$store.dispatch('getContacts').finally(() => {
+      this.busy = false
+    })
   }
-};
+}
 </script>
+
+<style scoped>
+</style>

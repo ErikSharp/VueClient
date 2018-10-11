@@ -1,0 +1,18 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "first": "Erik",
+      "last": "Sharp",
+      "imageUrl": "https://i.imgur.com/SxJrbWX.jpg",
+      "description": "Out-of-work Software Engineer"
+    },
+    {
+      "id": 2,
+      "first": "Lynsey",
+      "last": "Sharp",
+      "imageUrl": "https://i.imgur.com/9z0eOJv.jpg",
+      "description": "Software Test Analyst"
+    }
+  ]
+}

@@ -83,3 +83,11 @@ npm run test:e2e
 ```
 npm run test:unit
 ```
+
+### Serve the db.json file
+
+- [Docs](https://www.npmjs.com/package/json-server)
+
+```
+json-server --watch db.json
+```
