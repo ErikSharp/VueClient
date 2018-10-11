@@ -24,15 +24,17 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="indigo" dark fixed app>
+    <v-toolbar color="primary" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>Application</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <router-view/>
     </v-content>
-    <v-footer color="indigo" app>
-      <span class="white--text">&copy; 2017</span>
+    <v-footer color="primary" app>
+      <v-flex text-xs-center class="secondary--text">
+        &copy; 2018
+      </v-flex>
     </v-footer>
   </v-app>
 </template>

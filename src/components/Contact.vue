@@ -1,18 +1,27 @@
 <template>
   <v-flex xs6>
-    <v-card color="indigo" class="white--text">
-      <v-layout>
+    <v-card color="secondary" class="accent--text">
+      <v-layout @click="onClickContact">
         <v-flex xs5>
-          <v-img :src="person.imageUrl" contain></v-img>
+          <v-img height="125px" :src="person.imageUrl" contain></v-img>
         </v-flex>
         <v-flex xs7>
           <v-card-title primary-title>
-            <h3>{{`${person.first} ${person.last}`}}</h3>
-            <p>{{person.description}}</p>
+            <div class="headline">{{`${person.first} ${person.last}`}}</div>
+            <div>{{person.description}}</div>
           </v-card-title>
         </v-flex>
       </v-layout>
     </v-card>
+    <v-snackbar v-model="snackbar" top>
+      {{`You clicked on ${person.first} ${person.last}`}}
+      <v-btn
+        color="primary"
+        flat
+        @click="snackbar = false">
+        Close
+      </v-btn>
+    </v-snackbar>
   </v-flex>
 </template>
 
@@ -20,6 +29,16 @@
 export default {
   props: {
     person: Object
+  },
+  data() {
+    return {
+      snackbar: false
+    }
+  },
+  methods: {
+    onClickContact() {
+      this.snackbar = true
+    }
   }
 }
 </script>

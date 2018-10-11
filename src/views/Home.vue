@@ -1,12 +1,12 @@
 <template>
-  <v-card>
-    <v-alert type="error" :value="error">{{error}}</v-alert>
-    <v-container v-if="!error" grid-list-md>
-      <v-layout row wrap>
-        <contact v-for="contact in contacts" :key="contact.id" :person="contact"/>
-      </v-layout>
-    </v-container>
-  </v-card>
+    <div>
+      <v-alert type="error" :value="error">{{error}}</v-alert>
+      <v-container v-if="!error" grid-list-md>
+        <v-layout row wrap>
+          <contact v-for="contact in contacts" :key="contact.id" :person="contact"/>
+        </v-layout>
+      </v-container>
+    </div>
 </template>
 
 <script>
