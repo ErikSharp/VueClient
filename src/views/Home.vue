@@ -1,7 +1,7 @@
 <template>
   <v-card>
-    <v-alert type="error" :value="errorMessage">{{errorMessage}}</v-alert>
-    <v-container v-if="!errorMessage" grid-list-md>
+    <v-alert type="error" :value="error">{{error}}</v-alert>
+    <v-container v-if="!error" grid-list-md>
       <v-layout row wrap>
         <contact v-for="contact in contacts" :key="contact.id" :person="contact"/>
       </v-layout>
@@ -20,12 +20,7 @@ export default {
       busy: false
     }
   },
-  computed: {
-    ...mapState(['contacts']),
-    errorMessage() {
-      return this.$store.error ? this.$store.error.errorMessage : null
-    }
-  },
+  computed: mapState(['contacts', 'error']),
   created() {
     this.busy = true
 
