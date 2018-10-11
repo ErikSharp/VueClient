@@ -1,13 +1,21 @@
 import { expect } from 'chai'
 import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import contact from '@/components/Contact.vue'
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
+describe('Contact.vue', () => {
+  it('shows the first name when passed', () => {
+    const first = 'Jimbo'
+    const wrapper = shallowMount(contact, {
+      propsData: {
+        person: {
+          id: 1,
+          first,
+          last: 'Sharp',
+          imageUrl: 'https://i.imgur.com/SxJrbWX.jpg',
+          description: 'Out-of-work Software Engineer'
+        }
+      }
     })
-    expect(wrapper.text()).to.include(msg)
+    expect(wrapper.text()).to.include(first)
   })
 })
