@@ -5,8 +5,8 @@ import colors from 'vuetify/es5/util/colors'
 
 Vue.use(Vuetify, {
   theme: {
-    primary: colors.amber.lighten2,
-    secondary: colors.amber.darken3,
-    accent: colors.amber.accent2
+    primary: colors.blue.lighten2,
+    secondary: colors.blue.darken3,
+    accent: '#efefef'
   }
 })

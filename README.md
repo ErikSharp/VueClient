@@ -89,5 +89,5 @@ npm run test:unit
 - [Docs](https://www.npmjs.com/package/json-server)
 
 ```
-json-server --watch db.json
+json-server --watch db.json -d 3000
 ```

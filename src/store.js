@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     contacts: [],
-    error: ''
+    error: '',
+    busy: false
   },
   mutations: {
     SET_CONTACTS(state, contacts) {
@@ -15,15 +16,22 @@ export default new Vuex.Store({
     },
     SET_ERROR(state, error) {
       state.error = error
+    },
+    SET_BUSY(state, busy) {
+      state.busy = busy
     }
   },
   actions: {
     getContacts({ commit }) {
+      commit('SET_BUSY', true)
+
       return AxiosService.getContacts()
         .then(response => {
+          commit('SET_BUSY', false)
           commit('SET_CONTACTS', response.data)
         })
         .catch(error => {
+          commit('SET_BUSY', false)
           if (error.response) {
             commit(
               'SET_ERROR',

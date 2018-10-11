@@ -32,14 +32,21 @@
       <router-view/>
     </v-content>
     <v-footer color="primary" app>
-      <v-flex text-xs-center class="secondary--text">
-        &copy; 2018
-      </v-flex>
+      <v-layout row>
+        <v-flex xs2 text-xs-center class="secondary--text">
+          &copy; 2018
+        </v-flex>
+        <v-flex xs10 justify-end>
+          <v-progress-circular v-show="busy" indeterminate color="secondary"></v-progress-circular>
+        </v-flex>
+      </v-layout>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data: () => ({
     drawer: null
@@ -54,7 +61,8 @@ export default {
     goAbout() {
       this.$router.push({ name: 'about' })
     }
-  }
+  },
+  computed: mapState(['busy'])
 }
 </script>
 

@@ -15,18 +15,9 @@ import Contact from '@/components/Contact.vue'
 
 export default {
   components: { Contact },
-  data() {
-    return {
-      busy: false
-    }
-  },
   computed: mapState(['contacts', 'error']),
   created() {
-    this.busy = true
-
-    this.$store.dispatch('getContacts').finally(() => {
-      this.busy = false
-    })
+    this.$store.dispatch('getContacts')
   }
 }
 </script>
