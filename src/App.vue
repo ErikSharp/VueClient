@@ -26,7 +26,7 @@
     </v-navigation-drawer>
     <v-toolbar color="primary" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>Application Boilerplate {{ environmentName ? `(${environmentName})` : "" }}</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <router-view/>
@@ -62,7 +62,12 @@ export default {
       this.$router.push({ name: 'about' })
     }
   },
-  computed: mapState(['busy'])
+  computed: {
+    ...mapState(['busy']),
+    environmentName() {
+      return process.env.VUE_APP_ENVIRONMENT
+    }
+  }
 }
 </script>
 
