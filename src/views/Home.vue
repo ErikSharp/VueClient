@@ -3,7 +3,7 @@
       <v-alert type="error" :value="error">{{error}}</v-alert>
       <v-container v-if="!error" grid-list-md>
         <v-layout row wrap>
-          <contact v-for="contact in contacts" :key="contact.id" :person="contact"/>
+          <contact v-for="contact in contact.contacts" :key="contact.id" :person="contact"/>
         </v-layout>
       </v-container>
     </div>
@@ -15,9 +15,9 @@ import Contact from '@/components/Contact.vue'
 
 export default {
   components: { Contact },
-  computed: mapState(['contacts', 'error']),
+  computed: mapState(['contact', 'error']),
   created() {
-    this.$store.dispatch('getContacts')
+    this.$store.dispatch('contact/getContacts')
   }
 }
 </script>
